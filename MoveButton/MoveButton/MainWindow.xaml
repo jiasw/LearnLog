@@ -4,12 +4,67 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoveButton"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         Title="问答" Height="150" Width="338">
-    <Grid>
+    <Window.Resources>
+
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#e6f7ff"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF6200EE"/>
+            <!-- 默认背景颜色 -->
+            <Setter Property="Foreground" Value="White"/>
+            <!-- 字体颜色 -->
+
+            <Setter Property="BorderBrush" Value="#FF6200EE"/>
+            <!-- 边框颜色 -->
+            <Setter Property="BorderThickness" Value="1"/>
+            <!-- 边框厚度 -->
+            <Setter Property="Cursor" Value="Hand"/>
+            <!-- 鼠标光标样式 -->
+            <Setter Property="FontSize" Value="16"/>
+            <!-- 字体大小 -->
+            <Setter Property="Height" Value="40"/>
+            <!-- 按钮高度 -->
+            <Setter Property="Width" Value="100"/>
+            <!-- 按钮宽度 -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FF3700B3"/>
+                                <!-- 悬浮背景颜色 -->
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FF6200EE"/>
+                                <!-- 点击背景颜色 -->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="{StaticResource BackgroundBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100" />
             <ColumnDefinition Width="230" />
+
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <Button Grid.Column="1" Content="确定" Style="{StaticResource RoundedButtonStyle}" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center"/>
+        <Button Grid.Column="1" Content="取消" Style="{StaticResource RoundedButtonStyle}" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center" Margin="115,0,0,0"/>
     </Grid>
 </Window>
