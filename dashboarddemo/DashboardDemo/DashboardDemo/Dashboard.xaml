@@ -1,0 +1,87 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+                     xmlns:control="clr-namespace:DashboardDemo">
+    <Style TargetType="{x:Type control:Dashboard}">
+        <Setter Property="Value" Value="0"/>
+        <Setter Property="Maximum" Value="120"/>
+        <Setter Property="Minimum" Value="0"/>
+        <Setter Property="PlateBackground" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type control:Dashboard}">
+                    <Grid>
+                        <Viewbox>
+                            <Border CornerRadius="200" ClipToBounds="True" 
+                BorderBrush="{TemplateBinding PlateBorderBrush}" 
+                BorderThickness="{TemplateBinding PlateBorderThickness}" 
+                Background="{TemplateBinding PlateBackground}">
+                                <Grid>
+                                    <Canvas Name="canvasPlate" Width="400" Height="400"  Background="Transparent" Margin="14">
+                                        <Canvas.RenderTransform>
+                                            <RotateTransform Angle="-45" CenterX="200" CenterY="200"/>
+                                        </Canvas.RenderTransform>
+                                    </Canvas>
+                                    <ed:Arc ArcThickness="24" Opacity="0.1" 
+        ArcThicknessUnit="Pixel"
+        EndAngle="135.5"
+        Fill="#45246B"
+        StartAngle="-135.5"
+        Stretch="None"
+        StrokeEndLineCap="Round"
+        StrokeStartLineCap="Round" />
+                                    <ed:Arc ArcThickness="24" Opacity="0.8" x:Name="arckd"
+                            Fill="#2E1C5C"
+        ArcThicknessUnit="Pixel"
+        EndAngle="50"
+        StartAngle="-135.5"
+        Stretch="None"
+        StrokeEndLineCap="Round"
+        StrokeStartLineCap="Round" >
+
+                                    </ed:Arc>
+                                    <!--  刻度盘当前值对应的圆弧  -->
+
+                                    <Border Width="240" Height="240" CornerRadius="120"  Opacity="0.5"  Margin="14">
+                                        <Border.Background>
+                                            <RadialGradientBrush RadiusX="1" RadiusY="1">
+                                                <GradientStop Color="#45246B" Offset="0.2"/>
+                                                <GradientStop Color="#2E1C5C" Offset="0.3"/>
+                                                <GradientStop Color="#253192" Offset="0.5"/>
+                                            </RadialGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                    <Path Name="pointer" Data="M200 205,40 200,200 195,200 205" RenderTransformOrigin="0.5,0.5" Margin="14">
+                                        <Path.Fill>
+                                            <RadialGradientBrush RadiusX="1" RadiusY="1">
+                                                <GradientStop Color="#00C9FF" Offset="0.3"/>
+                                                <GradientStop Color="#CE97EF" Offset="0.4"/>
+                                                <GradientStop Color="#091851" Offset="1"/>
+                                            </RadialGradientBrush>
+                                        </Path.Fill>
+                                        <Path.RenderTransform>
+                                            <RotateTransform x:Name="rtPointer" Angle="-45"/>
+                                        </Path.RenderTransform>
+                                    </Path>
+                                    <Border Width="80" Height="80" CornerRadius="40"  Margin="14">
+                                        <Border.Background>
+                                            <RadialGradientBrush RadiusX="1" RadiusY="1">
+                                                <GradientStop Color="#45246B" Offset="0.2"/>
+                                                <GradientStop Color="#2E1C5C" Offset="0.3"/>
+                                                <GradientStop Color="#253192" Offset="0.5"/>
+                                            </RadialGradientBrush>
+                                        </Border.Background>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <TextBlock x:Name="valueTxt" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="km/h" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Viewbox>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
