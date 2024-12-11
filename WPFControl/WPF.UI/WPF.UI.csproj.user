@@ -13,6 +13,9 @@
     <Compile Update="Controls\PathControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\RadialGauge.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\RectangleBorderAnimation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\PathControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RadialGauge.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\RectangleBorderAnimation.xaml">

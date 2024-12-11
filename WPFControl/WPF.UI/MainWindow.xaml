@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
         xmlns:local="clr-namespace:WPF.UI"
         xmlns:ctl="clr-namespace:WPF.UI.Controls"
         mc:Ignorable="d"
@@ -13,7 +14,21 @@
             <RowDefinition Height="50*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <ctl:CircularProgressBar x:Name="circleProgressBar" CurrentValue="0" />
+        <!--<ctl:CircularProgressBar x:Name="circleProgressBar" CurrentValue="0" />-->
+        
+        <ed:Arc ArcThickness="2" Opacity="0.8" x:Name="arckd" Width="200" Height="200"
+                    Fill="#2E1C5C"
+ArcThicknessUnit="Pixel"
+EndAngle="480"
+StartAngle="240"
+Stretch="None"
+StrokeEndLineCap="Round"
+StrokeStartLineCap="Round" >
+
+        </ed:Arc>
+        <Canvas Width="200" Height="200">
+            
+        </Canvas>
         <Button Name="btnStart" Content="开始" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" />
     </Grid>
 </Window>

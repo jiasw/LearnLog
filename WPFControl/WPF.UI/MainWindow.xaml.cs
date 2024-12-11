@@ -78,10 +78,10 @@ namespace WPF.UI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           // keyFrameAnimation_Completed();
+           keyFrameAnimation_Completed();
 
-            PathControl pathControl = new PathControl();
-            pathControl.ShowDialog();
+            //PathControl pathControl = new PathControl();
+            //pathControl.ShowDialog();
            
         }
 
