@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMathine", "StateMathine.csproj", "{F4653B38-A027-4F15-A82B-C83BE8B828D7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskDispose", "..\TaskDispose\TaskDispose.csproj", "{899C4B16-3290-495C-9519-C58FB8CC7638}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StateMathine", "StateMathine.csproj", "{F4653B38-A027-4F15-A82B-C83BE8B828D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{F4653B38-A027-4F15-A82B-C83BE8B828D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4653B38-A027-4F15-A82B-C83BE8B828D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4653B38-A027-4F15-A82B-C83BE8B828D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{899C4B16-3290-495C-9519-C58FB8CC7638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{899C4B16-3290-495C-9519-C58FB8CC7638}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{899C4B16-3290-495C-9519-C58FB8CC7638}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{899C4B16-3290-495C-9519-C58FB8CC7638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
