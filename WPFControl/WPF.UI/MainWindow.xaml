@@ -15,8 +15,8 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <!--<ctl:CircularProgressBar x:Name="circleProgressBar" CurrentValue="0" />-->
-        
-        <ed:Arc ArcThickness="2" Opacity="0.8" x:Name="arckd" Width="200" Height="200"
+
+        <ed:Arc ArcThickness="12" Opacity="0.8"  x:Name="arckd" Width="200" Height="200"
                     Fill="#2E1C5C"
 ArcThicknessUnit="Pixel"
 EndAngle="480"

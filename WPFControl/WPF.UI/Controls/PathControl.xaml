@@ -4,24 +4,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.UI.Controls"
+        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
         mc:Ignorable="d"
         Title="PathControl" Height="450" Width="800">
-    <Grid>
-        <Viewbox>
-            <Path Stroke="Black" StrokeThickness="10"  >
+    <Viewbox>
+        <Grid>
+            <ed:Arc ArcThickness="12" Opacity="0.8"  x:Name="arckd" Width="200" Height="200"
+                    Fill="#2E1C5C"
+ArcThicknessUnit="Pixel"
+EndAngle="140"
+StartAngle="220"
+Stretch="None"
+StrokeEndLineCap="Round"
+StrokeStartLineCap="Round" >
+
+            </ed:Arc>
+            <Path RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-95"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
                 <Path.Data>
                     <PathGeometry>
-                        <PathFigure StartPoint="100,100" IsClosed="True">
-                            <LineSegment Point="200,100" />
-                            <ArcSegment Point="100,200"   
-                            Size="100,100"
-                            SweepDirection="Clockwise"
-                            IsLargeArc="False" />
+                        <PathFigure StartPoint="105,100">
+                            <LineSegment Point="45,45" />
+                            <LineSegment Point="100,105" />
                         </PathFigure>
                     </PathGeometry>
                 </Path.Data>
+                <Path.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FF0000" Offset="0" />
+                        <GradientStop Color="#0000FF" Offset="1" />
+                    </LinearGradientBrush>
+                </Path.Fill>
             </Path>
-        </Viewbox>
-        
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Window>

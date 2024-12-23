@@ -43,7 +43,7 @@ namespace WPF.UI
             animation.From = 0;
             animation.To = 1;
             animation.Duration = new Duration(new System.TimeSpan(0, 0, 8));
-            circleProgressBar.BeginAnimation(CircularProgressBar.CurrentValueProperty, animation);
+            //circleProgressBar.BeginAnimation(CircularProgressBar.CurrentValueProperty, animation);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace WPF.UI
             ease.EasingMode = EasingMode.EaseOut;
             animation.EasingFunction =ease;
             
-            circleProgressBar.BeginAnimation(CircularProgressBar.CurrentValueProperty, animation);
+            //circleProgressBar.BeginAnimation(CircularProgressBar.CurrentValueProperty, animation);
         }
 
         private void keyFrameAnimation_Completed()
@@ -71,7 +71,7 @@ namespace WPF.UI
             animation.KeyFrames.Add(new LinearDoubleKeyFrame(0.5, KeyTime.FromTimeSpan(new System.TimeSpan(0, 0, 4))));
             animation.KeyFrames.Add(new LinearDoubleKeyFrame(0.75, KeyTime.FromTimeSpan(new System.TimeSpan(0, 0, 6))));
             animation.KeyFrames.Add(new LinearDoubleKeyFrame(1, KeyTime.FromTimeSpan(new System.TimeSpan(0, 0, 8))));
-            circleProgressBar.BeginAnimation(CircularProgressBar.CurrentValueProperty, animation);
+            //circleProgressBar.BeginAnimation(CircularProgressBar.CurrentValueProperty, animation);
         }
 
 
