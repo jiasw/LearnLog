@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+        xmlns:ec="http://schemas.microsoft.com/expression/2010/controls"
         xmlns:local="clr-namespace:WPF.UI"
         xmlns:ctl="clr-namespace:WPF.UI.Controls"
         mc:Ignorable="d"
@@ -11,24 +12,24 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!--<ctl:CircularProgressBar x:Name="circleProgressBar" CurrentValue="0" />-->
-
-        <ed:Arc ArcThickness="12" Opacity="0.8"  x:Name="arckd" Width="200" Height="200"
-                    Fill="#2E1C5C"
-ArcThicknessUnit="Pixel"
-EndAngle="480"
-StartAngle="240"
-Stretch="None"
-StrokeEndLineCap="Round"
-StrokeStartLineCap="Round" >
-
-        </ed:Arc>
-        <Canvas Width="200" Height="200">
+        <Border Grid.Row="0"  Background="Gray">
+            <Viewbox>
+                <ctl:PathControl Height="200" Margin="182,9,218,8" />
+            </Viewbox>
             
-        </Canvas>
-        <Button Name="btnStart" Content="开始" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" />
+        </Border>
+        
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Name="btnStart" Content="开始" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" />
+            <TextBox Name="txtangle" LostFocus="txtangle_LostFocus" Background="Gray"></TextBox>
+            <TextBox Name="txtresult"></TextBox>
+        </StackPanel>
+    
+
+        
     </Grid>
 </Window>

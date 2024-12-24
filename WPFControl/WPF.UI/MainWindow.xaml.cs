@@ -85,5 +85,14 @@ namespace WPF.UI
            
         }
 
+        private void txtangle_LostFocus(object sender, RoutedEventArgs e)
+        {
+            double angle = double.Parse(txtangle.Text);
+
+
+
+
+            txtresult.Text=Math.Cos(   angle*Math.PI/180   ).ToString();
+        }
     }
 }
