@@ -78,12 +78,31 @@ namespace WPF.UI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+           Task.Factory.StartNew(() => ShowDashBoard());
+
            keyFrameAnimation_Completed();
 
             //PathControl pathControl = new PathControl();
             //pathControl.ShowDialog();
            
         }
+
+        private void ShowDashBoard()
+        {
+            while (true)
+            {
+                Thread.Sleep(500);
+                Random random = new Random();
+                double value = random.Next(1, 180);
+                pathControl.Dispatcher.Invoke(() =>
+                {
+                    pathControl.Value = value;
+                });
+            }
+
+        }
+
 
         private void txtangle_LostFocus(object sender, RoutedEventArgs e)
         {

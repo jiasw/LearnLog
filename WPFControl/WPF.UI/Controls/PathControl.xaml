@@ -8,8 +8,26 @@
         mc:Ignorable="d" Height="400" Width="400">
     <Viewbox>
         <Grid >
-
-            <ed:Arc ArcThickness="10" Opacity="0.8"  x:Name="arckd" Width="400" Height="400"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <Grid Height="400" Grid.RowSpan="2">
+                <Ellipse  
+                Height="400"  
+                Width="400" >
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF53555B" Offset="0" />
+                            <GradientStop Color="#FF4D4D58" Offset="1" />
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FF000000" Direction="270" ShadowDepth="1" />
+                    </Ellipse.Effect>
+                </Ellipse>
+                <ed:Arc ArcThickness="10" Opacity="0.8"  x:Name="arckd" Width="400" Height="400"
                     Fill="#2E1C5C"
 ArcThicknessUnit="Pixel"
 EndAngle="135"
@@ -18,37 +36,71 @@ Stretch="None"
 StrokeEndLineCap="Round"
 StrokeStartLineCap="Round" >
 
-            </ed:Arc>
-            <Path RenderTransformOrigin="0.5,0.5">
+                </ed:Arc>
 
-                <Path.Data>
-                    <PathGeometry>
-                        <PathFigure StartPoint="195,200">
-                            <LineSegment Point="200,195" />
-                            <LineSegment Point="70,70" />
-                        </PathFigure>
-                    </PathGeometry>
-                </Path.Data>
-                <Path.Fill>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#FF0000" Offset="0" />
-                        <GradientStop Color="#0000FF" Offset="1" />
-                    </LinearGradientBrush>
-                </Path.Fill>
-            </Path>
-            <Canvas Name="tickcanvas"   >
-                <Canvas.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-45" CenterX="200" CenterY="200"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Canvas.RenderTransform>
+                <ed:Arc ArcThickness="10" Opacity="0.8"  x:Name="arcprocess" Width="380" Height="380"
+                     
+ArcThicknessUnit="Pixel"
+EndAngle="135"
+StartAngle="-135"
+Stretch="None"
+StrokeEndLineCap="Round"
+StrokeStartLineCap="Round" >
+                    <ed:Arc.Fill>
+                        <LinearGradientBrush>
+                            
+                            <GradientStop Color="Green" Offset="0.1" />
+                            <GradientStop Color="Yellow" Offset="0.5" />
+                            <GradientStop Color="Orange" Offset="0.75" />
+                            <GradientStop Color="Red" Offset="1" />
+                        </LinearGradientBrush>
+                    </ed:Arc.Fill>
+                </ed:Arc>
+                <Path RenderTransformOrigin="0.5,0.5" Name="guideline">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
 
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="200,20">
+                                <LineSegment Point="190,200" />
+                                <ArcSegment Size="10,15" Point="210,200" SweepDirection="Counterclockwise" />
 
-
-            </Canvas>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                    <Path.Fill>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF0000" Offset="0" />
+                            <GradientStop Color="#0000FF" Offset="1" />
+                        </LinearGradientBrush>
+                    </Path.Fill>
+                </Path>
+                <Canvas Name="tickcanvas"   >
+                    <Canvas.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-45" CenterX="200" CenterY="200"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Canvas.RenderTransform>
+                </Canvas>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="dddd" Name="txtValue" Grid.Row="1" HorizontalAlignment="Center" Foreground="White" FontSize="35"></TextBlock>
+            </Grid>
         </Grid>
+        
     </Viewbox>
 </UserControl>

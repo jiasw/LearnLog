@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -54,8 +56,7 @@ namespace WPF.UI.Controls
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             PathControl control = d as PathControl;
-           
-            
+           control.setValue(control.Value);
         }
 
 
@@ -69,6 +70,9 @@ namespace WPF.UI.Controls
         public PathControl()
         {
             InitializeComponent();
+            drawTick();
+            setValue(60);
+            this.guideline.RenderTransform = new RotateTransform() { Angle = 45 };
         }
 
 
@@ -102,7 +106,6 @@ namespace WPF.UI.Controls
 
                     Canvas.SetLeft(txtScale, 200 - 155 * Math.Cos(i * (Totalangle / (this.Maximum - this.Minimum)) * Math.PI / 180) - 17);
                     Canvas.SetTop(txtScale, 200 - 155 * Math.Sin(i * (Totalangle / (this.Maximum - this.Minimum)) * Math.PI / 180) - 10);
-
                     this.tickcanvas.Children.Add(txtScale);
                 }
                 else
@@ -116,10 +119,28 @@ namespace WPF.UI.Controls
 
                 lineScale.X2 = 200 - 190 * Math.Cos(i * (Totalangle / (this.Maximum - this.Minimum)) * Math.PI / 180);
                 lineScale.Y2 = 200 - 190 * Math.Sin(i * (Totalangle / (this.Maximum - this.Minimum)) * Math.PI / 180);
-                Trace.WriteLine(lineScale.X1 + " " + lineScale.Y1 + " " + lineScale.X2 + " " + lineScale.Y2);
                 this.tickcanvas.Children.Add(lineScale);
             }
 
+
+        }
+
+
+        private void setValue(double value)
+        {
+            if (guideline == null)
+                return;
+            double startAngle = -135;
+            double angle = (value - this.Minimum) * (Totalangle / (this.Maximum - this.Minimum));
+            DoubleAnimation animation = new DoubleAnimation();
+            animation.To = angle+ startAngle;
+            animation.Duration = new Duration(new System.TimeSpan(0, 0, 1));
+            var ease = new CubicEase();
+            ease.EasingMode = EasingMode.EaseOut;
+            animation.EasingFunction = ease;
+            txtValue.Text = value.ToString();
+            this.guideline.RenderTransform.BeginAnimation(RotateTransform.AngleProperty, animation);
+            
 
         }
 
