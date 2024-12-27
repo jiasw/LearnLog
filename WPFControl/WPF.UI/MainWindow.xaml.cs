@@ -92,26 +92,25 @@ namespace WPF.UI
         {
             while (true)
             {
-                Thread.Sleep(500);
+                Thread.Sleep(2000);
                 Random random = new Random();
                 double value = random.Next(1, 180);
                 pathControl.Dispatcher.Invoke(() =>
                 {
                     pathControl.Value = value;
                 });
+
+                Random random1 = new Random();
+                double dvalue = random1.Next(0, 100);
+                CircularProcess.Dispatcher.Invoke(() =>
+                {
+                    CircularProcess.CurrentValue = dvalue/100;
+                });
+
             }
 
         }
 
 
-        private void txtangle_LostFocus(object sender, RoutedEventArgs e)
-        {
-            double angle = double.Parse(txtangle.Text);
-
-
-
-
-            txtresult.Text=Math.Cos(   angle*Math.PI/180   ).ToString();
-        }
     }
 }

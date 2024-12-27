@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Expression.Shapes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,10 +22,10 @@ namespace WPF.UI.Controls
     /// <summary>
     /// PathControl.xaml 的交互逻辑
     /// </summary>
-    public partial class PathControl : UserControl
+    public partial class RoundInstrument : UserControl
     {
 
-        public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(PathControl), new PropertyMetadata(0.0, OnMinimumChanged));
+        public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(RoundInstrument), new PropertyMetadata(0.0, OnMinimumChanged));
         public double Minimum
         {
             get { return (double)GetValue(MinimumProperty); }
@@ -31,11 +33,11 @@ namespace WPF.UI.Controls
         }
         private static void OnMinimumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            PathControl control = d as PathControl;
+            RoundInstrument control = d as RoundInstrument;
             control.drawTick();
         }
 
-        public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(double), typeof(PathControl), new PropertyMetadata(180.0, OnMaximumChanged));
+        public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(double), typeof(RoundInstrument), new PropertyMetadata(180.0, OnMaximumChanged));
         public double Maximum
         {
             get { return (double)GetValue(MaximumProperty); }
@@ -43,11 +45,11 @@ namespace WPF.UI.Controls
         }
         private static void OnMaximumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            PathControl control = d as PathControl;
+            RoundInstrument control = d as RoundInstrument;
             control.drawTick();
         }
 
-        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(double), typeof(PathControl), new PropertyMetadata(0.0, OnValueChanged));
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(double), typeof(RoundInstrument), new PropertyMetadata(0.0, OnValueChanged));
         public double Value
         {
             get { return (double)GetValue(ValueProperty); }
@@ -55,8 +57,20 @@ namespace WPF.UI.Controls
         }
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            PathControl control = d as PathControl;
+            RoundInstrument control = d as RoundInstrument;
            control.setValue(control.Value);
+        }
+
+        public double StepValue
+        {
+            get { return (double)GetValue(StepValueProperty); }
+            set { SetValue(StepValueProperty, value); }
+        }
+        public static readonly DependencyProperty StepValueProperty = DependencyProperty.Register("StepValue", typeof(double), typeof(RoundInstrument), new PropertyMetadata(10.0, OnStepValueChanged));
+        private static void OnStepValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            RoundInstrument control = d as RoundInstrument;
+            control.drawTick();
         }
 
 
@@ -66,8 +80,10 @@ namespace WPF.UI.Controls
         /// </summary>
         private double Totalangle = 270;
 
+        private double startAngle = -135;
 
-        public PathControl()
+
+        public RoundInstrument()
         {
             InitializeComponent();
             drawTick();
@@ -87,7 +103,7 @@ namespace WPF.UI.Controls
                 //添加刻度线
                 Line lineScale = new Line();
 
-                if (i % 10 == 0)
+                if (i % StepValue == 0)
                 {
                     //注意Math.Cos和Math.Sin的参数是弧度，记得将角度转为弧度制
                     lineScale.X1 = 200 - 170 * Math.Cos(i * (Totalangle / (this.Maximum - this.Minimum)) * Math.PI / 180);
@@ -128,21 +144,37 @@ namespace WPF.UI.Controls
 
         private void setValue(double value)
         {
+            
             if (guideline == null)
                 return;
-            double startAngle = -135;
             double angle = (value - this.Minimum) * (Totalangle / (this.Maximum - this.Minimum));
+            setProcess(angle + startAngle);
+            
             DoubleAnimation animation = new DoubleAnimation();
             animation.To = angle+ startAngle;
+            animation.Duration = new Duration(new System.TimeSpan(0, 0, 1));
+            var ease = new CubicEase();
+            ease.EasingMode = EasingMode.EaseInOut;
+            animation.EasingFunction = ease;
+            
+            this.guideline.RenderTransform.BeginAnimation(RotateTransform.AngleProperty, animation);
+            
+        }
+
+
+        private void setProcess(double value)
+        {
+            DoubleAnimation animation = new DoubleAnimation();
+            animation.To = value;
             animation.Duration = new Duration(new System.TimeSpan(0, 0, 1));
             var ease = new CubicEase();
             ease.EasingMode = EasingMode.EaseOut;
             animation.EasingFunction = ease;
             txtValue.Text = value.ToString();
+            arckd.BeginAnimation(Arc.StartAngleProperty, animation);
             this.guideline.RenderTransform.BeginAnimation(RotateTransform.AngleProperty, animation);
-            
-
         }
+
 
     }
 }

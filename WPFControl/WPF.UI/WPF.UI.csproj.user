@@ -10,13 +10,7 @@
     <Compile Update="Controls\CircularProgressBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\PathControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Controls\RadialGauge.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Controls\RectangleBorderAnimation.xaml.cs">
+    <Compile Update="Controls\RoundInstrument.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -24,13 +18,7 @@
     <Page Update="Controls\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\PathControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Controls\RadialGauge.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Controls\RectangleBorderAnimation.xaml">
+    <Page Update="Controls\RoundInstrument.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
