@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -20,7 +21,7 @@ namespace WPF.UI.Controls
     /// </summary>
     public partial class CircularProgressBar : UserControl
     {
-        
+        private Point _lastPoint=new Point(0,0); //进度条上次的位置
         public CircularProgressBar()
         {
             InitializeComponent();
@@ -44,6 +45,7 @@ namespace WPF.UI.Controls
             set { SetValue(CurrentValueProperty, value);SetProcess(value); }
         }
 
+        private ArcSegment arcsegment;
 
         /// <summary>
         /// 设置百分百，输入小数，自动乘100
@@ -158,10 +160,11 @@ namespace WPF.UI.Controls
             }
 
             Point arcEndPt = new Point(endLeft, endTop); //结束点
+            //Point arcEndPt = new Point(17, 31); //结束点
             Size arcSize = new Size(radius, radius);
             SweepDirection direction = SweepDirection.Clockwise; //顺时针弧形
             //弧形
-            ArcSegment arcsegment = new ArcSegment(arcEndPt, arcSize, 0, isLagreCircle, direction, true);
+            arcsegment = new ArcSegment(arcEndPt, arcSize, 0, isLagreCircle, direction, true);
 
             //形状集合
             PathSegmentCollection pathsegmentCollection = new PathSegmentCollection();
@@ -181,11 +184,47 @@ namespace WPF.UI.Controls
             pathGeometry.Figures = pathFigureCollection;
 
             //Data赋值
-            myCycleProcessBar1.Data = pathGeometry;
+            process.Data = pathGeometry;
             //达到100%则闭合整个
             if (angel == 360)
-                myCycleProcessBar1.Data = Geometry.Parse(myCycleProcessBar1.Data.ToString() + " z");
+                process.Data = Geometry.Parse(process.Data.ToString() + " z");
         }
 
+        private void AnimateEllipse(Point newPoint)
+        {
+            PointAnimation pointAnimation = new PointAnimation()
+            {
+                To = newPoint,
+                Duration = new Duration(TimeSpan.FromSeconds(0.5)),
+                FillBehavior = FillBehavior.HoldEnd
+            };
+
+            //process.BeginAnimation(process.Data, pointAnimation);
+            //// 将动画应用到控件的Canvas.Left和Canvas.Top属性
+            //Storyboard.SetTarget(pointAnimation, MyEllipse);
+            //Storyboard.SetTargetProperty(pointAnimation, new PropertyPath("(Canvas.Left),(Canvas.Top)"));
+
+            //// 创建Storyboard以包含动画
+            //Storyboard storyboard = new Storyboard();
+            //storyboard.Children.Add(pointAnimation);
+
+            //// 开始动画
+            //storyboard.Begin();
+
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        { //起始点
+            double leftStart = 17;
+            double topStart = 3;
+
+            //结束点
+            double endLeft = 0;
+            double endTop = 0;
+            double radius = 14; //环形半径
+            Point arcEndPt = new Point(17, 31); //结束点
+            Size arcSize = new Size(radius, radius);
+            arcsegment = new ArcSegment(arcEndPt, arcSize, 0, true, SweepDirection.Clockwise, true);
+        }
     }
 }

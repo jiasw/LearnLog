@@ -10,7 +10,13 @@
     <Compile Update="Controls\CircularProgressBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\CircularRingProcessBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\RoundInstrument.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ShowDemo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -18,10 +24,16 @@
     <Page Update="Controls\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Controls\CircularRingProcessBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\RoundInstrument.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ShowDemo.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

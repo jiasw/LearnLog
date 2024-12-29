@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.UI.Controls"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
-        mc:Ignorable="d" Height="400" Width="400">
+        mc:Ignorable="d" Height="410" Width="410">
     <Grid>
         <Viewbox>
             <Grid >

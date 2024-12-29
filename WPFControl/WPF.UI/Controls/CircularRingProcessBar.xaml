@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="WPF.UI.Controls.CircularRingProcessBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+             xmlns:local="clr-namespace:WPF.UI.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="150">
+
+    <Viewbox>
+        <Grid>
+            <ed:Arc ArcThickness="{Binding  RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor},Path=StrokeThickness,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"   x:Name="arcbackground" Height="100" Width="{Binding Height, RelativeSource={RelativeSource Self}}"
+ArcThicknessUnit="Pixel"
+EndAngle="360"
+StartAngle="0"
+Stretch="None"
+StrokeEndLineCap="Round"
+StrokeStartLineCap="Round" >
+                <ed:Arc.Fill>
+                    <SolidColorBrush Color="Gray" Opacity="0.5" />
+                </ed:Arc.Fill>
+            </ed:Arc>
+            <ed:Arc ArcThickness="{Binding  RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor},Path=StrokeThickness,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Opacity="0.8"  x:Name="arcprocess"  Height="100" Width="{Binding Height, RelativeSource={RelativeSource Self}}"
+                     
+ArcThicknessUnit="Pixel"
+EndAngle="135"
+StartAngle="-135"
+Stretch="None"
+StrokeEndLineCap="Round"
+StrokeStartLineCap="Round" >
+                <ed:Arc.Fill>
+                    <SolidColorBrush Color="#FF0061FF" />
+                </ed:Arc.Fill>
+            </ed:Arc>
+            <TextBlock Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24">
+                <Run Text="80" Name="txtprocess" />
+                <Run Text="%" />
+            </TextBlock>
+        </Grid>
+    </Viewbox>
+</UserControl>

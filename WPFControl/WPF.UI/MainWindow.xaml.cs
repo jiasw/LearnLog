@@ -82,7 +82,7 @@ namespace WPF.UI
            Task.Factory.StartNew(() => ShowDashBoard());
 
            keyFrameAnimation_Completed();
-
+            //Task.Factory.StartNew(() => StartCircleAnimation());
             //PathControl pathControl = new PathControl();
             //pathControl.ShowDialog();
            
@@ -100,16 +100,45 @@ namespace WPF.UI
                     pathControl.Value = value;
                 });
 
+                int i = 1;
+
                 Random random1 = new Random();
                 double dvalue = random1.Next(0, 100);
                 CircularProcess.Dispatcher.Invoke(() =>
                 {
-                    CircularProcess.CurrentValue = dvalue/100;
+                    CircularProcess.CurrentValue = dvalue / 100;
                 });
 
             }
 
+
+
+
         }
+
+
+        private void StartCircleAnimation()
+        {
+            int i = 1;
+            while (true)
+            {
+                
+                
+                CircularProcess.Dispatcher.Invoke(() =>
+                {
+                    CircularProcess.CurrentValue = i / 100;
+                });
+                i++;
+                if (i >= 100)
+                {
+                    i = 1;
+                }
+                Thread.Sleep(1000);
+            }
+            
+        }
+
+
 
 
     }
