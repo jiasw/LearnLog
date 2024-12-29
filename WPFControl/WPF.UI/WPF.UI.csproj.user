@@ -16,7 +16,7 @@
     <Compile Update="Controls\RoundInstrument.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="ShowDemo.xaml.cs">
+    <Compile Update="Controls\ThermometerProcessBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -30,10 +30,10 @@
     <Page Update="Controls\RoundInstrument.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Controls\ThermometerProcessBar.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ShowDemo.xaml">
+    <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

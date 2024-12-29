@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:WPF.UI"
         xmlns:ctl="clr-namespace:WPF.UI.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="900">
+        Title="MainWindow" Height="450" Width="1200">
     <Window.Resources>
         <Storyboard x:Key="Storyboard1" RepeatBehavior="Forever">
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.StartPoint)" 
@@ -53,7 +53,7 @@
         </Grid.RowDefinitions>
         <!--<ctl:CircularProgressBar x:Name="circleProgressBar" CurrentValue="0" />-->
 
-        <WrapPanel>
+        <WrapPanel >
             
             <ctl:CircularProgressBar CurrentValue="0.8" x:Name="CircularProcess" Height="100" />
             <Rectangle x:Name="rectangle" Width="100" Height="100"
@@ -85,6 +85,7 @@ StrokeThickness="3" Stroke="Black" StrokeDashOffset="2">
             </Rectangle>
             <ctl:RoundInstrument Height="210" Width="210"  Maximum="180"   x:Name="pathControl"  StepValue="10" Value="60" Margin="100,10,0,0"  />
             <ctl:CircularRingProcessBar Margin="10"  Value="30" FontSize="28" x:Name="circularRingProcessBar" Height="200" Width="200"></ctl:CircularRingProcessBar>
+            <ctl:ThermometerProcessBar ></ctl:ThermometerProcessBar>
             <Button Name="btnStart" Content="开始" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" />
         </WrapPanel>
         
