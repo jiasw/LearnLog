@@ -43,32 +43,13 @@ namespace WPF.UI.Controls
         public static readonly DependencyProperty MinValueProperty =
             DependencyProperty.Register("MinValue", typeof(double), typeof(CircularRingProcessBar), new PropertyMetadata(0.0));
  
-        public double CurrentValue
-        {
-            get { return (double)GetValue(CurrentValueProperty); }
-            set { SetValue(CurrentValueProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CurrentValue.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CurrentValueProperty =
-            DependencyProperty.Register("CurrentValue", typeof(double), typeof(CircularRingProcessBar), new PropertyMetadata(0.0));
-
-
-
+     
         public CircularRingProcessBar()
         {
             InitializeComponent();
         }
 
-        public double FontSize
-        {
-            get { return (double)GetValue(FontSizeProperty); }
-            set { SetValue(FontSizeProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for FontSize.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty FontSizeProperty =
-            DependencyProperty.Register("FontSize", typeof(double), typeof(CircularRingProcessBar), new PropertyMetadata(12.0));
+       
 
         public double Value
         {   
@@ -96,21 +77,22 @@ namespace WPF.UI.Controls
             {
                 value = bar.MaxValue;
             }
-            bar.txtprocess.Text = value.ToString("P0");
+            bar.txtprocess.Text = value.ToString();
             bar.setValuesAnimation(value);
         }
 
         private void setValuesAnimation(double value)
         {
-            double angle = 360 * value/(MaxValue - MinValue);
-            double currentAngle = 360 * (CurrentValue - MinValue) / (MaxValue - MinValue);
-            double diffAngle = angle - currentAngle;
+            double angle = 360 * value/(MaxValue - MinValue)-180;
+            
             double duration = 1000;
-            DoubleAnimation animation = new DoubleAnimation(currentAngle, currentAngle + diffAngle, new Duration(TimeSpan.FromMilliseconds(duration)));
+            DoubleAnimation animation = new DoubleAnimation();
+            animation.To = angle;
+            animation.Duration = new Duration(TimeSpan.FromMilliseconds(duration));
             animation.EasingFunction = new QuarticEase();
             animation.Completed += (s, e) =>
             {
-                CurrentValue = value;
+                Value = value;
             };
             arcprocess.BeginAnimation(Arc.EndAngleProperty, animation);
 
@@ -136,7 +118,7 @@ namespace WPF.UI.Controls
 
         // Using a DependencyProperty as the backing store for Stroke.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StrokeProperty =
-            DependencyProperty.Register("BackgroundStroke", typeof(Brush), typeof(CircularRingProcessBar), new PropertyMetadata(Brushes.Gray));
+            DependencyProperty.Register("BackgroundStroke", typeof(Brush), typeof(CircularRingProcessBar), new PropertyMetadata(Brushes.Blue));
 
         public Brush ForegroundStroke
         {

@@ -108,6 +108,10 @@ namespace WPF.UI
                 {
                     CircularProcess.CurrentValue = dvalue / 100;
                 });
+                circularRingProcessBar.Dispatcher.Invoke(() =>
+                {
+                    circularRingProcessBar.Value = dvalue ;
+                });
 
             }
 

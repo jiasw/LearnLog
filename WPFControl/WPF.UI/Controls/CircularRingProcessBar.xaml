@@ -16,26 +16,29 @@ EndAngle="360"
 StartAngle="0"
 Stretch="None"
 StrokeEndLineCap="Round"
+                    Opacity="0.8"
+                    Fill="{Binding  RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor},Path=BackgroundStroke}"
 StrokeStartLineCap="Round" >
-                <ed:Arc.Fill>
-                    <SolidColorBrush Color="Gray" Opacity="0.5" />
-                </ed:Arc.Fill>
             </ed:Arc>
-            <ed:Arc ArcThickness="{Binding  RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor},Path=StrokeThickness,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Opacity="0.8"  x:Name="arcprocess"  Height="100" Width="{Binding Height, RelativeSource={RelativeSource Self}}"
-                     
+
+            <ed:Arc ArcThickness="{Binding  RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor},Path=StrokeThickness,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" 
+                     x:Name="arcprocess"  Height="100" Width="{Binding Height, RelativeSource={RelativeSource Self}}"
 ArcThicknessUnit="Pixel"
-EndAngle="135"
-StartAngle="-135"
+EndAngle="180"
+StartAngle="-180"
 Stretch="None"
 StrokeEndLineCap="Round"
+                    Fill="{Binding  RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor},Path=ForegroundStroke}"
 StrokeStartLineCap="Round" >
-                <ed:Arc.Fill>
-                    <SolidColorBrush Color="#FF0061FF" />
-                </ed:Arc.Fill>
+                <ed:Arc.Effect>
+                    <DropShadowEffect BlurRadius="5" Color="Black" Direction="270" ShadowDepth="2" ></DropShadowEffect>
+                </ed:Arc.Effect>
             </ed:Arc>
-            <TextBlock Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24">
-                <Run Text="80" Name="txtprocess" />
-                <Run Text="%" />
+
+
+            <TextBlock Foreground="{Binding  RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor},Path=ForegroundStroke,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24">
+                <Run Text="80" Name="txtprocess" FontSize="{Binding  RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor},Path=FontSize,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" />
+                <Run Text="%" FontSize="{Binding  RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor},Path=FontSize,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" />
             </TextBlock>
         </Grid>
     </Viewbox>
