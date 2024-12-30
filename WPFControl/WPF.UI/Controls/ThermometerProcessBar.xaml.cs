@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -55,7 +56,13 @@ namespace WPF.UI.Controls
 
         // Using a DependencyProperty as the backing store for CurrentValue.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurrentValueProperty =
-            DependencyProperty.Register("CurrentValue", typeof(double), typeof(ThermometerProcessBar), new PropertyMetadata(0.0));  
+            DependencyProperty.Register("CurrentValue", typeof(double), typeof(ThermometerProcessBar), new PropertyMetadata(0.0,OnCurrentValueChanged));
+
+        private static void OnCurrentValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ThermometerProcessBar thermometerProcessBar = d as ThermometerProcessBar;
+            thermometerProcessBar.renderValue((double)e.NewValue);
+        }
 
         public double MinValue
         {
@@ -67,7 +74,9 @@ namespace WPF.UI.Controls
         public static readonly DependencyProperty MinValueProperty =
             DependencyProperty.Register("MinValue", typeof(double), typeof(ThermometerProcessBar), new PropertyMetadata(0.0));
 
-
+        /// <summary>
+        /// 每个刻度代表的数值
+        /// </summary>
         public double TickInterval
         {
             get { return (double)GetValue(TickIntervalProperty); }
@@ -97,8 +106,9 @@ namespace WPF.UI.Controls
         /// </summary>
         private void renderTick()
         {
-            double tickCount = (MaxValue - MinValue) / TickInterval+1;
-            double normalTickHeight =(tickStartY- tickEndY) /tickCount;
+            double intervalCount = (MaxValue - MinValue) / TickInterval;
+            double tickCount = intervalCount + 1;
+            double normalTickHeight =(tickStartY- tickEndY) / intervalCount;
             for (double i = 0; i < tickCount; i++)
             {
                 double currentwidth = normalTickWidth;
@@ -150,6 +160,19 @@ namespace WPF.UI.Controls
             }
 
 
+        }
+
+
+        private void renderValue(double value)
+        {
+            double renderValue = tickStartY - (value - MinValue) / (MaxValue - MinValue) * (tickStartY - tickEndY);
+            DoubleAnimation animation = new DoubleAnimation();
+            animation.To = renderValue;
+            animation.Duration = new Duration(new System.TimeSpan(0, 0, 1));
+            var ease = new CubicEase();
+            ease.EasingMode = EasingMode.EaseOut;
+            animation.EasingFunction = ease;
+            lineProcess.BeginAnimation(Line.Y1Property, animation);
         }
 
     }

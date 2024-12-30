@@ -111,6 +111,7 @@ namespace WPF.UI
                 circularRingProcessBar.Dispatcher.Invoke(() =>
                 {
                     circularRingProcessBar.Value = dvalue ;
+                    thermometerProcessBar.CurrentValue = dvalue;
                 });
 
             }

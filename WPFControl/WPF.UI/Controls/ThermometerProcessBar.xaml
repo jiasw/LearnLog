@@ -16,7 +16,7 @@
                 
             </Canvas>
                 <Canvas  Height="100" Width="100">
-                    <Line X1="50" Y1="68" X2="50" Y2="80" Stroke="Red" StrokeThickness="2"  />
+                    <Line X1="50" Y1="10"  X2="50" Y2="80" Stroke="Red" StrokeThickness="2" Name="lineProcess"  />
                     <Ellipse Canvas.Left="46" Canvas.Top="72" Width="8" Height="8" Fill="Red" />
                
                 </Canvas>

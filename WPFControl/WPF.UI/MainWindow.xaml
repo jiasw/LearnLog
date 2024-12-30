@@ -85,7 +85,7 @@ StrokeThickness="3" Stroke="Black" StrokeDashOffset="2">
             </Rectangle>
             <ctl:RoundInstrument Height="210" Width="210"  Maximum="180"   x:Name="pathControl"  StepValue="10" Value="60" Margin="100,10,0,0"  />
             <ctl:CircularRingProcessBar Margin="10"  Value="30" FontSize="28" x:Name="circularRingProcessBar" Height="200" Width="200"></ctl:CircularRingProcessBar>
-            <ctl:ThermometerProcessBar ></ctl:ThermometerProcessBar>
+            <ctl:ThermometerProcessBar CurrentValue="40" x:Name="thermometerProcessBar"></ctl:ThermometerProcessBar>
             <Button Name="btnStart" Content="开始" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" />
         </WrapPanel>
         
