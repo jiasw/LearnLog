@@ -5,43 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF.UI.Controls"
              mc:Ignorable="d" Loaded="UserControl_Loaded"
-             d:DesignHeight="400" d:DesignWidth="900">
-    <Canvas x:Name="WaveCanvas" Background="Transparent">
-        
+             d:DesignHeight="400" d:DesignWidth="400">
+    <Grid>
         
 
-        <Path Stroke="Blue" StrokeThickness="2" Fill="Red">
-            <Path.Clip>
-                <RectangleGeometry Rect="0,100,100,200" >
-                    <RectangleGeometry.Transform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform Y="-35" X="-22"/>
-                        </TransformGroup>
-                    </RectangleGeometry.Transform>
-                </RectangleGeometry>
-            </Path.Clip>
-            <Path.Data>
-                <PathGeometry>
-                    <PathGeometry.Transform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform X="-22"/>
-                        </TransformGroup>
-                    </PathGeometry.Transform>
-                    <PathFigure StartPoint="0,200">
-                        <!-- 绘制正弦波 -->
-                        <BezierSegment Point1="100,100" Point2="200,300" Point3="300,200" />
-                        <BezierSegment Point1="400,100" Point2="500,300" Point3="600,200" />
-                        <BezierSegment Point1="700,100" Point2="800,300" Point3="900,200" />
-                        <PolyLineSegment Points="900,400 0,400"/>
-                    </PathFigure>
-                </PathGeometry>
-            </Path.Data>
-        </Path>
-    </Canvas>
+
+    </Grid>
 </UserControl>

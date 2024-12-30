@@ -6,11 +6,22 @@
         xmlns:local="clr-namespace:WPF.UI"
         mc:Ignorable="d"
         Title="Show" Height="450" Width="800">
-    <Grid Width="100">
-        <StackPanel>
-            
-            <hc:WaveProgressBar Value="50" />
-        </StackPanel>
-        
+    <Grid Width="400">
+        <Grid.Clip>
+            <EllipseGeometry x:Name="MyEllipseGeometry1"
+RadiusX="150"
+RadiusY="150"
+Center="200,200"/>
+
+
+        </Grid.Clip>
+
+
+        <Image 
+Source="sampleImages\4.png" 
+Width="600" Height="600"  HorizontalAlignment="Left" Margin="-90,-5,0,-160">
+
+        </Image>
+
     </Grid>
 </Window>

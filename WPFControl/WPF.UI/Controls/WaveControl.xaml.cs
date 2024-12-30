@@ -9,7 +9,6 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -17,21 +16,13 @@ using System.Windows.Shapes;
 namespace WPF.UI.Controls
 {
     /// <summary>
-    /// BezierDemo.xaml 的交互逻辑
+    /// WaveControl.xaml 的交互逻辑
     /// </summary>
-    public partial class BezierDemo : UserControl
+    public partial class WaveControl : UserControl
     {
-        private double _waveOffset;
-        public BezierDemo()
+        public WaveControl()
         {
             InitializeComponent();
-           
-        }
-
-       
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

@@ -22,6 +22,9 @@
     <Compile Update="Controls\ThermometerProcessBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\WaveControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Show.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ThermometerProcessBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\WaveControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

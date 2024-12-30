@@ -9,8 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="sampleImages\4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="HandyControls" Version="3.5.3" />
     <PackageReference Include="NetCore5.0.Microsoft.Expression.Drawing" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="sampleImages\4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
