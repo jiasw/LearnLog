@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:WPF.UI"
         xmlns:ctl="clr-namespace:WPF.UI.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1200">
+        Title="MainWindow" Height="660" Width="1335">
     <Window.Resources>
         <Storyboard x:Key="Storyboard1" RepeatBehavior="Forever">
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.StartPoint)" 
@@ -48,13 +48,12 @@
     </Window.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         <!--<ctl:CircularProgressBar x:Name="circleProgressBar" CurrentValue="0" />-->
 
-        <WrapPanel >
-            
+        <WrapPanel ItemWidth="300" >
+
             <ctl:CircularProgressBar CurrentValue="0.8" x:Name="CircularProcess" Height="100" />
             <Rectangle x:Name="rectangle" Width="100" Height="100"
 HorizontalAlignment="Center" VerticalAlignment="Center" 
@@ -86,16 +85,19 @@ StrokeThickness="3" Stroke="Black" StrokeDashOffset="2">
             <ctl:RoundInstrument Height="210" Width="210"  Maximum="180"   x:Name="pathControl"  StepValue="10" Value="60" Margin="100,10,0,0"  />
             <ctl:CircularRingProcessBar Margin="10"  Value="30" FontSize="28" x:Name="circularRingProcessBar" Height="200" Width="200"></ctl:CircularRingProcessBar>
             <ctl:ThermometerProcessBar CurrentValue="40" x:Name="thermometerProcessBar"></ctl:ThermometerProcessBar>
+
+
+            <ctl:BezierDemo x:Name="bezierDemo" />
             <Button Name="btnStart" Content="开始" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" />
         </WrapPanel>
-        
-        
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            
-            
-        </StackPanel>
-    
 
-        
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+
+        </StackPanel>
+
+
+
     </Grid>
 </Window>

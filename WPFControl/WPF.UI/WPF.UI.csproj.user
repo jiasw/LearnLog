@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\BezierDemo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\CircularProgressBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,8 +22,14 @@
     <Compile Update="Controls\ThermometerProcessBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Show.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\BezierDemo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -34,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Show.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
