@@ -75,7 +75,7 @@ namespace WPF.UI.Controls
 
 
             //数字显示
-            lbValue.Content = (percentValue * 100).ToString("0") + "%";
+            lbValue.Text = (percentValue * 100).ToString("0") + "%";
 
             /***********************************************
             * 整个环形进度条使用Path来绘制，采用三角函数来计算

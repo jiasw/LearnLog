@@ -25,9 +25,6 @@
     <Compile Update="Controls\WaveControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Show.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\BezierDemo.xaml">
@@ -49,9 +46,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Show.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

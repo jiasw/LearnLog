@@ -16,8 +16,9 @@
                 </Path>
                 <Path Name="process" Data="M17,3 A14,14 0 0 1 16,3 " Stroke="#FF2486F3" StrokeThickness="1" Height="34" Width="34" VerticalAlignment="Center" HorizontalAlignment="Center">
                 </Path>
-                
-                <Label Name="lbValue" Content="0%" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="9" />
+
+                <TextBlock Name="lbValue" Text="0%" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" />
+                <!--<Label Name="lbValue"  Content="0%" HorizontalAlignment="Center" Height="6" VerticalAlignment="Center" FontSize="9" />-->
                 
             </Grid>
         </Viewbox>

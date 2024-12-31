@@ -5,41 +5,52 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF.UI.Controls"
              xmlns:hc="https://handyorg.github.io/handycontrol"
+             Loaded="UserControl_Loaded"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="900">
-    <Grid Margin="-80,0,0,0">
+             d:DesignHeight="170" d:DesignWidth="900">
 
-        <hc:Arc Width="300" Height="300"  Stroke="White" StrokeThickness="2" StartAngle="0" EndAngle="360"></hc:Arc>
 
+    <Viewbox>
+        <Grid Background="Green"  Width="900" Height="200">
+            <Grid.Clip>
+                <EllipseGeometry RadiusX="100" RadiusY="100" Center="100,100" />
+
+            </Grid.Clip>
+            <Path  Name="wavePath"  Stretch="Fill" VerticalAlignment="Bottom" Height="170"   >
+                <Path.Fill>
+                    <SolidColorBrush Color="BlueViolet" />
+                </Path.Fill>
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform x:Name="MyTranslateTransform" X="-300"/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+                <Path.Data>
+                    <PathGeometry>
+                        <PathGeometry.Transform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform  />
+                            </TransformGroup>
+                        </PathGeometry.Transform>
+                        <PathFigure StartPoint="0,200">
+                            <!-- 绘制正弦波 -->
+                            <BezierSegment Point1="100,100" Point2="200,300" Point3="300,200" />
+                            <BezierSegment Point1="400,100" Point2="500,300" Point3="600,200" />
+                            <BezierSegment Point1="700,100" Point2="800,300" Point3="900,200" />
+                            <PolyLineSegment Points="900,400 0,400"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Grid>
+
+    </Viewbox>
         
-        <Path  Fill="Red" HorizontalAlignment="Left" Stretch="Fill" VerticalAlignment="Top" Width="1500" Height="395" >
-            <Path.Clip>
-                <EllipseGeometry>
-                    
-                </EllipseGeometry>
-                
-            </Path.Clip>
-            <Path.Data>
-                <PathGeometry>
-                    <PathGeometry.Transform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform X="0"/>
-                        </TransformGroup>
-                    </PathGeometry.Transform>
-                    <PathFigure StartPoint="0,200">
-                        <!-- 绘制正弦波 -->
-                        <BezierSegment Point1="100,100" Point2="200,300" Point3="300,200" />
-                        <BezierSegment Point1="400,100" Point2="500,300" Point3="600,200" />
-                        <BezierSegment Point1="700,100" Point2="800,300" Point3="900,200" />
-                        <PolyLineSegment Points="900,400 0,400"/>
-                    </PathFigure>
-                </PathGeometry>
-            </Path.Data>
-        </Path>
-    </Grid>
-
-
+   
 </UserControl>
