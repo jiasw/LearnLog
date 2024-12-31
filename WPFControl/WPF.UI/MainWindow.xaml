@@ -94,7 +94,6 @@ StrokeThickness="3" Stroke="Black" StrokeDashOffset="2">
 
             <ctl:BezierDemo x:Name="bezierDemo" />
             <ctl:WaveControl Height="237" Width="360"  />
-            <Line Stroke="Black" StrokeThickness="12" X1="100" Y1="100" X2="200" Y2="200" ></Line>
         </WrapPanel>
     </Grid>
 </Window>
