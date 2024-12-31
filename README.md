@@ -1,2 +1,3 @@
 控件截图
-![image](https://github.com/user-attachments/assets/74e9d50d-f184-4bb2-9809-25d82f7dada3)
+ 
+![mycontrol](https://github.com/user-attachments/assets/310eede8-5752-4470-ab9f-3dbecbe839b7)
