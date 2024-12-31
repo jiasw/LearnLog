@@ -22,8 +22,8 @@ namespace WPF.UI.Controls
     public partial class ThermometerProcessBar : UserControl
     {
 
-        private double leftTickStartX=46;
-        private double rightTickStartX= 54;
+        private double leftTickStartX=25;
+        private double rightTickStartX= 33;
         private double tickStartY = 68;
         private double longTickWidth = 5;
         private double normalTickWidth = 2;
