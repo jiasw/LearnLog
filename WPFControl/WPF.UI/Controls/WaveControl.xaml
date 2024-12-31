@@ -6,17 +6,21 @@
              xmlns:local="clr-namespace:WPF.UI.Controls"
              xmlns:hc="https://handyorg.github.io/handycontrol"
              Loaded="UserControl_Loaded"
-             mc:Ignorable="d" 
-             d:DesignHeight="170" d:DesignWidth="900">
-
-
+             mc:Ignorable="d" Height="200" Width="200">
     <Viewbox>
-        <Grid Background="Green"  Width="900" Height="200">
+        <Grid Height="200" Width="200">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#FF6D6D64" Offset="0"></GradientStop>
+                    <GradientStop Color="#FF605B98"  Offset="1"></GradientStop>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.Clip>
-                <EllipseGeometry RadiusX="100" RadiusY="100" Center="100,100" />
-
+                <EllipseGeometry Center="100,100" RadiusX="100" RadiusY="100" >
+                </EllipseGeometry>
             </Grid.Clip>
-            <Path  Name="wavePath"  Stretch="Fill" VerticalAlignment="Bottom" Height="170"   >
+
+            <Path  Name="wavePath"  Stretch="Fill"  Width="1500" Margin="-500,-20,0,0" >
                 <Path.Fill>
                     <SolidColorBrush Color="BlueViolet" />
                 </Path.Fill>
@@ -25,7 +29,7 @@
                         <ScaleTransform/>
                         <SkewTransform/>
                         <RotateTransform/>
-                        <TranslateTransform x:Name="MyTranslateTransform" X="-300"/>
+                        <TranslateTransform x:Name="MyTranslateTransform" X="0" Y="100"/>
                     </TransformGroup>
                 </Path.RenderTransform>
                 <Path.Data>
@@ -48,9 +52,9 @@
                     </PathGeometry>
                 </Path.Data>
             </Path>
-        </Grid>
 
+
+        </Grid>
     </Viewbox>
-        
-   
+
 </UserControl>

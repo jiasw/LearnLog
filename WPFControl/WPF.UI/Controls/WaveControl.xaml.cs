@@ -36,14 +36,15 @@ namespace WPF.UI.Controls
         private void BindAnimation()
         {
             // 创建一个 DoubleAnimation
-            DoubleAnimation animation = new DoubleAnimation
+            ThicknessAnimation animation = new ThicknessAnimation
             {
-                From = 0, // 起始位置
-                To = -300, // 结束位置
+                From = new Thickness(10, 10, 0, 0), // 起始位置
+                To = new Thickness(-500, 10, 0, 0), // 结束位置
                 Duration = TimeSpan.FromSeconds(1), // 动画持续时间
                 RepeatBehavior = RepeatBehavior.Forever, // 循环
             };
-            MyTranslateTransform.BeginAnimation(TranslateTransform.XProperty, animation);
+            wavePath.BeginAnimation(MarginProperty, animation);
+           // MyTranslateTransform.BeginAnimation(TranslateTransform.XProperty, animation);
             
         }
 
