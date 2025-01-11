@@ -4,42 +4,48 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            int[] nums = { 1, 2, 3, 4, 5, 6 };
+            List<List<int>> alllist = PermutationsI(nums);
+            foreach (List<int> item in alllist)
+            {
+                Console.WriteLine(string.Join("-", item));
+            }
+            Console.WriteLine("全排列结束");
+            Console.ReadKey();
+
         }
 
 
-        static List<string[]> Alllist(List<string> ints)
+        static List<List<int>> PermutationsI(int[] nums)
         {
-           List<string[]> ints1 = new List<string[]>();
-
-
-            bool[] arrselected = new bool[ints.Count];
-
-
-
-
-
-
-
-            return ints1;
+            List<List<int>> res = [];
+            Backtracking([], nums, new bool[nums.Length], res);
+            return res;
         }
 
 
-        
-        static List<string[]> Backtracking(string[] arrselect, string[] result,int index, List<string[]>)
-        {
-            if (arrselect.Length==1)
-            {
-                result[index] = arrselect[0];
-                return result;
-            }
-            for (int i = 0; i < arrselect.Length; i++)
-            {
-                string curr = arrselect[i];
-                result
 
+        static void Backtracking(List<int> state, int[] choices, bool[] selected,List<List<int>> res )
+        {
+            if (state.Count==choices.Length)
+            {
+                res.Add(new List<int>(state));
+                return;
             }
-            
+
+            for (int i = 0; i < choices.Length; i++)
+            {
+                int choice = choices[i];
+
+                if (!selected[i])
+                {
+                    selected[i] = true;
+                    state.Add(choice);
+                    Backtracking(state, choices, selected, res);
+                    selected[i] = false;
+                    state.RemoveAt(state.Count - 1);
+                }
+            }
 
         }
 
