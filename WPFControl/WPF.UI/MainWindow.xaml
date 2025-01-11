@@ -51,10 +51,7 @@
             <RadialGradientBrush>
                 <GradientStop Color="#FF3B4B69" Offset="0"/>
                 <GradientStop Color="#FF253046" Offset="1"/>
-                
             </RadialGradientBrush>
-
-
         </Grid.Background>
 
         <WrapPanel  >
@@ -89,11 +86,11 @@ StrokeThickness="3" Stroke="Black" StrokeDashOffset="2">
             </Rectangle>
             <ctl:RoundInstrument Height="210" Width="210"  Maximum="180"   x:Name="pathControl"  StepValue="10" Value="60" Margin="100,10,0,0"  />
             <ctl:CircularRingProcessBar Margin="10"  Value="30" FontSize="28" x:Name="circularRingProcessBar" Height="200" Width="200"></ctl:CircularRingProcessBar>
-            <ctl:ThermometerProcessBar CurrentValue="40" x:Name="thermometerProcessBar" Width="300"></ctl:ThermometerProcessBar>
-
-
-            <ctl:BezierDemo x:Name="bezierDemo" />
-            <ctl:WaveControl Height="237" Width="360"  />
+            <ctl:ThermometerProcessBar CurrentValue="40" x:Name="thermometerProcessBar" Height="200"></ctl:ThermometerProcessBar>
+            
+                <ctl:WaveControl Height="237" Width="360" Value="10" x:Name="waveControl"  />
+            
+            
         </WrapPanel>
     </Grid>
 </Window>

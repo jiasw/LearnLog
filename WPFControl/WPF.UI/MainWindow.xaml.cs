@@ -58,6 +58,7 @@ namespace WPF.UI
                 {
                     circularRingProcessBar.Value = dvalue ;
                     thermometerProcessBar.CurrentValue = dvalue;
+                    waveControl.Value = dvalue;
                 });
 
             }

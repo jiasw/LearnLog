@@ -8,53 +8,68 @@
              Loaded="UserControl_Loaded"
              mc:Ignorable="d" Height="200" Width="200">
     <Viewbox>
-        <Grid Height="200" Width="200">
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="#FF6D6D64" Offset="0"></GradientStop>
-                    <GradientStop Color="#FF605B98"  Offset="1"></GradientStop>
-                </LinearGradientBrush>
-            </Grid.Background>
-            <Grid.Clip>
-                <EllipseGeometry Center="100,100" RadiusX="100" RadiusY="100" >
-                </EllipseGeometry>
-            </Grid.Clip>
+        <Grid  Height="200" Width="200">
+            <Grid>
+                <Ellipse Name="ellipse" StrokeThickness="0"  Fill="Black"  >
+                    <Ellipse.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FF000000"   ShadowDepth="6" />
+                    </Ellipse.Effect>
+                </Ellipse>
+                <TextBlock Text="Wave" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#FF6D6D64" Offset="0"></GradientStop>
+                        <GradientStop Color="#FF605B98"  Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.Clip>
+                    <EllipseGeometry Center="100,100" RadiusX="100" RadiusY="100" >
+                    </EllipseGeometry>
+                </Grid.Clip>
 
-            <Path  Name="wavePath"  Stretch="Fill"  Width="1500" Margin="-500,-20,0,0" >
-                <Path.Fill>
-                    <SolidColorBrush Color="BlueViolet" />
-                </Path.Fill>
-                <Path.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform x:Name="MyTranslateTransform" X="0" Y="100"/>
-                    </TransformGroup>
-                </Path.RenderTransform>
-                <Path.Data>
-                    <PathGeometry>
-                        <PathGeometry.Transform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform  />
-                            </TransformGroup>
-                        </PathGeometry.Transform>
-                        <PathFigure StartPoint="0,200">
-                            <!-- 绘制正弦波 -->
-                            <BezierSegment Point1="100,100" Point2="200,300" Point3="300,200" />
-                            <BezierSegment Point1="400,100" Point2="500,300" Point3="600,200" />
-                            <BezierSegment Point1="700,100" Point2="800,300" Point3="900,200" />
-                            <PolyLineSegment Points="900,400 0,400"/>
-                        </PathFigure>
-                    </PathGeometry>
-                </Path.Data>
-            </Path>
+                <Path  Name="wavePath"  Stretch="Fill"  Width="1500" Margin="0,45,0,0" >
+                    <Path.Fill>
+                        <SolidColorBrush Color="BlueViolet" />
+                    </Path.Fill>
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform x:Name="MyTranslateTransform" X="0" Y="0"/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathGeometry.Transform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform  />
+                                </TransformGroup>
+                            </PathGeometry.Transform>
+                            <PathFigure StartPoint="0,100">
+                                <!-- 绘制正弦波 -->
+                                <BezierSegment Point1="100,50" Point2="200,150" Point3="300,100" />
+                                <BezierSegment Point1="400,50" Point2="500,150" Point3="600,100" />
+                                <BezierSegment Point1="700,50" Point2="800,150" Point3="900,100" />
+                                <PolyLineSegment Points="900,400 0,400"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+                <TextBlock  Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <Run Name="waveText"></Run>
+                    <Run>%</Run>
+                </TextBlock>
 
-
+            </Grid>
+            
         </Grid>
+        
     </Viewbox>
 
 </UserControl>

@@ -4,20 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF.UI.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="450">
+             mc:Ignorable="d" >
     <Viewbox>
-        
-            <Grid Background="Azure" Name="MainGrid">
-                <Canvas  Height="100" Width="100" Name="bgCanvas">
-                    <Line X1="50" Y1="10" X2="50" Y2="80" Stroke="Gray" StrokeThickness="4" StrokeStartLineCap="Round" />
-                    <Ellipse Canvas.Left="43.5" Canvas.Top="69.5" Width="13" Height="13" Fill="Gray" />
+
+        <Grid Background="Azure" Name="MainGrid" Height="100" Width="60" HorizontalAlignment="Center">
+            <Canvas  Height="100"  Name="bgCanvas" Width="60">
+                <Line X1="29" Y1="10" X2="29" Y2="80" Stroke="Gray" StrokeThickness="4" StrokeStartLineCap="Round" />
+                <Ellipse Canvas.Left="22.5" Canvas.Top="69.5" Width="13" Height="13" Fill="Gray" />
                     
                 
             </Canvas>
-                <Canvas  Height="100" Width="100">
-                    <Line X1="50" Y1="10"  X2="50" Y2="80" Stroke="Red" StrokeThickness="2" Name="lineProcess"  />
-                    <Ellipse Canvas.Left="46" Canvas.Top="72" Width="8" Height="8" Fill="Red" />
+            <Canvas  Height="100" Width="60">
+                <Line X1="29" Y1="10"  X2="29" Y2="80" Stroke="Red" StrokeThickness="2" Name="lineProcess"  />
+                    <Ellipse Canvas.Left="25" Canvas.Top="72" Width="8" Height="8" Fill="Red" />
                
                 </Canvas>
             </Grid>

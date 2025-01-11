@@ -22,6 +22,28 @@ namespace WPF.UI.Controls
     /// </summary>
     public partial class WaveControl : UserControl
     {
+        public double Value
+        {
+            get { return (double)GetValue(ValueProperty); }
+            set { SetValue(ValueProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ValueProperty =
+            DependencyProperty.Register("Value", typeof(double), typeof(WaveControl), new PropertyMetadata(0.0, OnValueChanged)
+                , new ValidateValueCallback(ValidateLimitedValue));
+        private static bool ValidateLimitedValue(object value)
+        {
+            double doubleValue = (double)value;
+            // 限制值在 0 到 100 之间
+            return doubleValue >= 0 && doubleValue <= 100;
+        }
+        private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            WaveControl control = d as WaveControl;
+            control.SetWaveValue((double)e.NewValue);
+        }
+
         public WaveControl()
         {
             InitializeComponent();
@@ -32,20 +54,38 @@ namespace WPF.UI.Controls
             BindAnimation();
         }
 
+        private double minHeight = 0;
+        private double maxHeight = 200;
+        private void SetWaveValue(double value)
+        {
+            double process = value   /100;
+            waveText.Text = value.ToString() ;
+            double height = (maxHeight + minHeight)-(maxHeight - minHeight) * process ;
+            BindAnimationY(height);
+
+        }
+
+        private void BindAnimationY(double process)
+        {
+            DoubleAnimation animation = new DoubleAnimation
+            {
+                To = process,
+                Duration = TimeSpan.FromSeconds(0.5)
+            };
+            MyTranslateTransform.BeginAnimation(TranslateTransform.YProperty, animation);
+        }
 
         private void BindAnimation()
         {
             // 创建一个 DoubleAnimation
             ThicknessAnimation animation = new ThicknessAnimation
             {
-                From = new Thickness(10, 10, 0, 0), // 起始位置
-                To = new Thickness(-500, 10, 0, 0), // 结束位置
-                Duration = TimeSpan.FromSeconds(1), // 动画持续时间
-                RepeatBehavior = RepeatBehavior.Forever, // 循环
+                From = new Thickness(10, 10, 0, 0), 
+                To = new Thickness(-500, 10, 0, 0), 
+                Duration = TimeSpan.FromSeconds(1.5), 
+                RepeatBehavior = RepeatBehavior.Forever, 
             };
             wavePath.BeginAnimation(MarginProperty, animation);
-           // MyTranslateTransform.BeginAnimation(TranslateTransform.XProperty, animation);
-            
         }
 
     }
