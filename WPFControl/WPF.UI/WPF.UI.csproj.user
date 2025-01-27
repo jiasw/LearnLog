@@ -13,6 +13,12 @@
     <Compile Update="Controls\CircularRingProcessBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\PipeLine.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\PipeLineThree.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\RoundInstrument.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +34,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\CircularRingProcessBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\PipeLine.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\PipeLineThree.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\RoundInstrument.xaml">

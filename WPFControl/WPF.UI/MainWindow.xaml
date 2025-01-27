@@ -87,8 +87,38 @@ StrokeThickness="3" Stroke="Black" StrokeDashOffset="2">
             <ctl:RoundInstrument Height="210" Width="210"  Maximum="180"   x:Name="pathControl"  StepValue="10" Value="60" Margin="100,10,0,0"  />
             <ctl:CircularRingProcessBar Margin="10"  Value="30" FontSize="28" x:Name="circularRingProcessBar" Height="200" Width="200"></ctl:CircularRingProcessBar>
             <ctl:ThermometerProcessBar CurrentValue="40" x:Name="thermometerProcessBar" Height="200"></ctl:ThermometerProcessBar>
-            
-                <ctl:WaveControl Height="237" Width="360" Value="10" x:Name="waveControl"  />
+
+            <ctl:WaveControl Height="237" Width="360" Value="60" x:Name="waveControl"  />
+            <Border>
+                <ctl:PipeLineThree Width="300" PipeLineActive1="False" PipeLineActive2="True" PipeLineActive3="True" />
+            </Border>
+            <Canvas Background="White">
+                <ctl:PipeLine Height="57" MoveSpeed="2" PipeLineActive="True" Width="290"  x:Name="pipeLine" RightDirection="Left" RenderTransformOrigin="0.5,0.5" Canvas.Left="10" HorizontalAlignment="Left" VerticalAlignment="Center"  >
+
+                </ctl:PipeLine>
+                <ctl:PipeLine  PipeLineActive="True"  Height="57" Width="275" LeftDirection="Down" RightDirection="Down"  RenderTransformOrigin="0.5,0.5" Canvas.Left="-99" Canvas.Top="166"  >
+                    <ctl:PipeLine.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ctl:PipeLine.RenderTransform>
+
+                </ctl:PipeLine>
+                <ctl:PipeLine Height="57" PipeLineActive="True" Width="275" LeftDirection="Down" RightDirection="Down"  RenderTransformOrigin="0.5,0.5" Canvas.Left="134" Canvas.Top="166"  >
+                    <ctl:PipeLine.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ctl:PipeLine.RenderTransform>
+
+                </ctl:PipeLine>
+            </Canvas>
             
             
         </WrapPanel>
