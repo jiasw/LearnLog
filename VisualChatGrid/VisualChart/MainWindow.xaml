@@ -1,0 +1,138 @@
+﻿<Window x:Class="VisualChart.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VisualChart"
+        mc:Ignorable="d" WindowState="Maximized"
+        Title="VisualChartGrid" Height="3840" Width="2160">
+    <Window.Resources>
+        <local:EnumToDoubleConverter x:Key="EnumToDoubleConverter" />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="黑体" FontSize="25" Text="标准对数远视力表"></TextBlock>
+
+                <StackPanel HorizontalAlignment="Center" Grid.Row="3" Orientation="Vertical">
+                    <TextBlock Text="中华人民共和国国家标准" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBlock Text="GB 11533-2011" FontSize="8"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel HorizontalAlignment="Center" >
+                    <TextBlock FontSize="8" FontWeight="Bold" Text="检查距离5米" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock FontSize="7" Text="5分记录" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock FontSize="7" Text="(小数记录)" HorizontalAlignment="Center"></TextBlock>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Grid.Column="2">
+                    <TextBlock FontSize="8" FontWeight="Bold" Text="检查距离2.5米" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock FontSize="7" Text="5分记录" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock FontSize="7" Text="(小数记录)" HorizontalAlignment="Center"></TextBlock>
+                </StackPanel>
+            </Grid>
+            
+            
+            
+            <StackPanel Orientation="Vertical" Grid.Row="2" >
+                <ItemsControl ItemsSource="{Binding SignLines}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel  Orientation="Vertical"   VerticalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock HorizontalAlignment="Center"  TextAlignment="Center" VerticalAlignment="Center">
+                                 <Run Text="{Binding LeftText.Text}" FontSize="8" FontWeight="Bold" />
+                                 <LineBreak />
+                                 <Run Text="{Binding LeftText.Level}" />
+                                </TextBlock>
+
+                                <ItemsControl ItemsSource="{Binding SignItems}" Grid.Column="1">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="{Binding LineHeight}" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderThickness="2" BorderBrush="Red" CornerRadius="3">
+                                            <Border  Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.SignHeight}" 
+                                                    Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.SignWidth}" 
+                                                    Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.Margin}" 
+                                                    RenderTransformOrigin="0.5,0.5">
+                                                <Border.RenderTransform>
+                                                    <TransformGroup>
+                                                        <RotateTransform Angle="{Binding Direction,Converter={StaticResource EnumToDoubleConverter}}"/>
+                                                    </TransformGroup>
+                                                </Border.RenderTransform>
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.SignUrl}" />
+                                                </Border.Background>
+                                            </Border>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+
+
+                                </ItemsControl>
+                                
+                                <TextBlock HorizontalAlignment="Center" TextAlignment="Center"  VerticalAlignment="Center" Grid.Column="2">
+                                 <Run Text="{Binding RightText.Text}" FontSize="8" FontWeight="Bold"   />
+                                 <LineBreak />
+                                 <Run Text="{Binding RightText.Text}" />
+                                </TextBlock>
+                            </Grid>
+
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+                
+                
+                
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+
+</Window>
